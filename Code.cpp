@@ -4,7 +4,7 @@
 
  using namespace std;
 
-
+// Lets Computer make a random guess between numbers 1 and 3
 int getComputerChoice()
 {
     srand(time(NULL));
@@ -20,6 +20,7 @@ int getComputerChoice()
     return 0;
 }
 
+// The Game Menu for the player
 int getPlayerChoice () {
     cout << "Rock, Paper, or Scissors?" << endl;
     cout << "1) Rock" << endl;
@@ -50,6 +51,7 @@ void ShowComputerChoices (int computerchoice) {
     if (computerchoice == 3) cout << "The Computer Chose: Scissors" << endl;
 }
 
+// Logic for when both player and computer choose the same number(object)
 int isTie (int playerchoice, int computerchoice) {
     if (playerchoice == computerchoice) {
          cout << "It's a TIE" << endl;
@@ -58,6 +60,7 @@ int isTie (int playerchoice, int computerchoice) {
     return 0;
 }
 
+// Logic for deciding if the player or the computer is the winner
 void isPlayerWinner (int playerchoice, int computerchoice) {
     if (playerchoice == 1 && computerchoice == 2) {
         cout << "You Lose! Paper beats Rock" << endl;
@@ -73,6 +76,7 @@ void isPlayerWinner (int playerchoice, int computerchoice) {
         cout << "You Win! Scissors beats Paper" << endl;
     }
 }
+
 int main ()
 {
     cout << "Rock Paper Scissors Menu" << endl;
@@ -92,7 +96,7 @@ int main ()
         ShowComputerChoices(ComputerChoice);
         isTie(PlayerChoice, ComputerChoice);
         isPlayerWinner (PlayerChoice, ComputerChoice);
-
+    
     } else if (MenuChoice == 'q') {
         cout << "You have quit the program. Have a nice day :)" << endl;
     }
