@@ -20,7 +20,7 @@ int getComputerChoice()
     return 0;
 }
 
-// The Game Menu for the player
+// The Game Menu for the user
 int getPlayerChoice () {
     cout << "Rock, Paper, or Scissors?" << endl;
     cout << "1) Rock" << endl;
@@ -30,6 +30,7 @@ int getPlayerChoice () {
     int PlayerChoice;
     cin >> PlayerChoice;
 
+//  Exception Handling in case User does not select the correct choice
     while (PlayerChoice!= 1 && PlayerChoice != 2 && PlayerChoice != 3)
     {
         cout << "Incorrect choice. Please enter 1) rock , 2) paper, or 3) scissors ";
@@ -39,19 +40,21 @@ int getPlayerChoice () {
     return PlayerChoice;
 }
 
+// Confirming User Choice of either Rock, Paper, or Scissors
 void ShowPlayerChoices (int playerchoice) {
     if (playerchoice == 1) cout << "You Choose: Rock" << endl;
     if (playerchoice == 2) cout << "You Choose: Paper" << endl;
     if (playerchoice == 3) cout << "You Choose: Scissors" << endl;
 }
 
+// Confirming Computer Choice of either Rock, Paper, or Scissors
 void ShowComputerChoices (int computerchoice) {
     if (computerchoice == 1) cout << "The Computer Chose: Rock" << endl;
     if (computerchoice == 2) cout << "The Computer Chose: Paper" << endl;
     if (computerchoice == 3) cout << "The Computer Chose: Scissors" << endl;
 }
 
-// Logic for when both player and computer choose the same number(object)
+// Game Logic for the case where both User and Computer choose the same number
 int isTie (int playerchoice, int computerchoice) {
     if (playerchoice == computerchoice) {
          cout << "It's a TIE" << endl;
@@ -60,7 +63,7 @@ int isTie (int playerchoice, int computerchoice) {
     return 0;
 }
 
-// Logic for deciding if the player or the computer is the winner
+// Game Logic for cases in which either the Computer or User won the game
 void isPlayerWinner (int playerchoice, int computerchoice) {
     if (playerchoice == 1 && computerchoice == 2) {
         cout << "You Lose! Paper beats Rock" << endl;
@@ -79,16 +82,21 @@ void isPlayerWinner (int playerchoice, int computerchoice) {
 
 int main ()
 {
+//  Game Start Menu
     cout << "Rock Paper Scissors Menu" << endl;
     cout << "-------------------------"<< endl;
     char MenuChoice;
     cout << "p)Play Game" << endl;
     cout << "q)Quit" << endl;
     cin >> MenuChoice;
+ 
+//  Exception Handling for incorrect Start Menu Choices
     while (MenuChoice != 'p' && MenuChoice !='q') {
         cout << "Choice is Invalid. Please choose (p) for play or (q) for quit ";
         cin >> MenuChoice;
     }
+ 
+// Chosen "Road" If User wants to Play the game  
     if (MenuChoice == 'p') {
         int PlayerChoice = getPlayerChoice();
         int ComputerChoice = getComputerChoice();
@@ -96,7 +104,8 @@ int main ()
         ShowComputerChoices(ComputerChoice);
         isTie(PlayerChoice, ComputerChoice);
         isPlayerWinner (PlayerChoice, ComputerChoice);
-    
+     
+//  Chosen "Road" If User wants to Quit the game
     } else if (MenuChoice == 'q') {
         cout << "You have quit the program. Have a nice day :)" << endl;
     }
